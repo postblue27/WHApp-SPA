@@ -5,6 +5,7 @@ import { TempAuthComponent } from './temp-auth/temp-auth.component';
 
 const routes: Routes = [
   {path: 'auth', component: AuthComponent},
+  {path: 'dashboard', component: AuthComponent},
 ];
 
 @NgModule({

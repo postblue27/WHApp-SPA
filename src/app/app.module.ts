@@ -16,6 +16,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwtModule } from '@auth0/angular-jwt';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { AuthService } from './_services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [	
@@ -36,8 +44,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgbModule,
     MatIconModule,
+    SnotifyModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config : {
+         tokenGetter: tokenGetter,
+         allowedDomains: ['localhost:5000', 'https://hrp-api.herokuapp.com'],
+         disallowedRoutes: ['localhost:5000/api/auth', 'https://hrp-api.herokuapp.com/api/auth']
+      }
+   }),
   ],
-  providers: [],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
