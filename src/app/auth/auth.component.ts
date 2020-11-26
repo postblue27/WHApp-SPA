@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
+import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from '../_helpers/custom-validators';
 import { AuthService } from '../_services/auth.service';
 
@@ -43,24 +44,25 @@ export class AuthComponent implements OnInit {
   userTypes = [
     {name: 'Owner'},
     {name: 'Renter'},
-    {name: 'Driver'}
+    {name: 'Driver'},
+    {name: 'Admin'},
   ];
 
   constructor(private fb: FormBuilder, private authService: AuthService,
-    public snotify: SnotifyService, private router: Router) { }
+    public toastr: ToastrService, private router: Router) { }
 
   ngOnInit() {
   }
 
   login() {
     this.authService.login(this.loginForm.value).subscribe(response => {
-      this.snotify.success('Logged In');
+      this.toastr.success('Logged In');
     }, error => {
-      this.snotify.error('Failed to login: ' + error);
+      this.toastr.error('Failed to login: ' + error);
     }, () => {
-      this.router.navigate(['/dashboard']);
+      if(this.authService.getDecodedToken().role === 'Admin')
+      this.router.navigate(['/admin']);
     });
-    // this.snotify.success('smth');
   }
 
   register() {

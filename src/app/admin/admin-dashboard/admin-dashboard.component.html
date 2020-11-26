@@ -1,0 +1,42 @@
+<mat-card mat-card  class="app-nav color-primary">
+  <button type="button" mat-stroked-button color="accent" (click)="drawer.toggle()">
+    Toggle sidenav
+  </button>
+</mat-card>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+    
+    <mat-accordion>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Users
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-list>
+          <mat-list-item>
+            <a mat-stroked-button [routerLink]="['admins']" class="sidenav-button">Admins</a>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-stroked-button [routerLink]="['owners']" class="sidenav-button">Owners</a>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-stroked-button [routerLink]="['renters']" class="sidenav-button">Renters</a>
+          </mat-list-item>
+          <mat-list-item>
+            <a mat-stroked-button [routerLink]="['drivers']" class="sidenav-button">Drivers</a>
+          </mat-list-item>
+        </mat-list>
+        
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
