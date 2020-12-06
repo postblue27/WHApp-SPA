@@ -1,86 +1,86 @@
 <div class="loginFormMainDiv">
   <div class="loginFormInside">
     <mat-tab-group class="loginFormInside" mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
-      <mat-tab label="Sign In">
+      <mat-tab i18n-label label="Sign In">
         <!--------------------- Login form --------------------->
         <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
           <mat-card>
             <!-- Login user userType control -->
             <mat-form-field class="full-width">
-              <mat-select placeholder="Who are you?" formControlName="userType">
-                <mat-option *ngFor="let userType of userTypes" [value]="userType.name">
+              <mat-select i18n-placeholder placeholder="Who are you?" formControlName="userType">
+                <mat-option i18n *ngFor="let userType of userTypes" [value]="userType.name">
                   {{ userType.name }}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="loginForm.controls['userType'].hasError('required')">
+              <mat-error i18n *ngIf="loginForm.controls['userType'].hasError('required')">
                 Field is <strong>required</strong>
               </mat-error>
             </mat-form-field>
 
             <!-- Login username control -->
             <mat-form-field class="full-width">
-              <input type="text" name="username" matInput placeholder="Username" formControlName="username">
-              <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+              <input type="text" name="username" matInput i18n-placeholder placeholder="Username" formControlName="username">
+              <mat-error i18n *ngIf="loginForm.controls['username'].hasError('required')">
                 Username is <strong>required</strong>
               </mat-error>
             </mat-form-field>
 
             <!-- Login password control -->
             <mat-form-field class="full-width">
-              <input type="password" name="password" matInput placeholder="Password" formControlName="password">
-              <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+              <input type="password" name="password" matInput i18n-placeholder placeholder="Password" formControlName="password">
+              <mat-error i18n *ngIf="loginForm.controls['password'].hasError('required')">
                 Password is <strong>required</strong>
               </mat-error>
             </mat-form-field>
             <!-- Login buttons -->
             <mat-card-actions>
-              <button [disabled]="!loginForm.valid" class="w-40" mat-raised-button color="primary" type="submit">Submit</button>
-              <button class="w-40" mat-stroked-button color="basic" type="reset">Reset</button>
+              <button i18n [disabled]="!loginForm.valid" class="w-40" mat-raised-button color="primary" type="submit">Submit</button>
+              <button i18n class="w-40" mat-stroked-button color="basic" type="reset">Reset</button>
             </mat-card-actions>
           </mat-card>
         </form>
       </mat-tab>
 
       <!-------------------- Registration form --------------------->
-      <mat-tab label="Registration">
+      <mat-tab i18n-label label="Registration">
         <form #registerNgForm="ngForm" [formGroup]="registerForm" novalidate (ngSubmit)="register()">
           <mat-card>
             <!-- Register user userType control -->
             <mat-form-field class="full-width">
-              <mat-select placeholder="Who are you?" formControlName="userType">
+              <mat-select i18n-placeholder placeholder="Who are you?" formControlName="userType">
                 <mat-option *ngFor="let userType of userTypes" [value]="userType.name">
                   {{ userType.name }}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="registerForm.controls['userType'].hasError('required')">
+              <mat-error i18n *ngIf="registerForm.controls['userType'].hasError('required')">
                 Field is <strong>required</strong>
               </mat-error>
             </mat-form-field>
             <!-- Register username control -->
             <mat-form-field class="full-width">
-              <input type="text" name="username" matInput placeholder="Username" formControlName="username">
-              <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
+              <input type="text" name="username" matInput i18n-placeholder placeholder="Username" formControlName="username">
+              <mat-error i18n *ngIf="registerForm.controls['username'].hasError('required')">
                 Username is <strong>required</strong>
               </mat-error>
             </mat-form-field>
             <!-- Register password control -->
             <mat-form-field class="full-width">
-              <input type="password" name="password" matInput placeholder="Password" formControlName="password">
-              <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+              <input type="password" name="password" matInput i18n-placeholder placeholder="Password" formControlName="password">
+              <mat-error i18n *ngIf="registerForm.controls['password'].hasError('required')">
                 Password is <strong>required</strong>
               </mat-error>
             </mat-form-field>
             <!-- Register password confirmation control -->
             <mat-form-field class="full-width">
-              <input type="password" name="confirmPassword" matInput placeholder="Confirm password" formControlName="confirmPassword">
-              <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('NoPasswordMatch')">
+              <input type="password" name="confirmPassword" matInput i18n-placeholder placeholder="Confirm password" formControlName="confirmPassword">
+              <mat-error i18n *ngIf="registerForm.controls['confirmPassword'].hasError('NoPasswordMatch')">
                 Password doesn't match
               </mat-error>
             </mat-form-field>
             <!-- Register buttons -->
             <mat-card-actions>
-              <button class="w-40" [disabled]="!registerForm.valid" mat-raised-button color="primary" type="submit">Submit</button>
-              <button class="w-40" mat-stroked-button color="basic" type="reset">Reset</button>
+              <button i18n class="w-40" [disabled]="!registerForm.valid" mat-raised-button color="primary" type="submit">Submit</button>
+              <button i18n class="w-40" mat-stroked-button color="basic" type="reset">Reset</button>
             </mat-card-actions>
           </mat-card>
         </form>

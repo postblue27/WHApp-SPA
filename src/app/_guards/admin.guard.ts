@@ -12,12 +12,6 @@ export class AdminGuard implements CanActivate {
     private authService: AuthService,
     private router: Router) {}
   canActivate(): boolean {
-    // console.log('Role is:' + this.authService.decodedToken.role);
-    // return this.authService.decodedToken.role.pipe(
-    //   map(role => {
-    //     if(role === 'Admin') return true;
-    //   })
-    // );
     if(this.authService.getDecodedToken().role === 'Admin') {
       return true;
     }
