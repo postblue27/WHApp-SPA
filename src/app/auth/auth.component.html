@@ -5,14 +5,14 @@
         <!--------------------- Login form --------------------->
         <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
           <mat-card>
-            <!-- Login user userType control -->
+            <!-- Login user userRole control -->
             <mat-form-field class="full-width">
-              <mat-select i18n-placeholder placeholder="Who are you?" formControlName="userType">
-                <mat-option i18n *ngFor="let userType of userTypes" [value]="userType.name">
-                  {{ userType.name }}
+              <mat-select i18n-placeholder placeholder="Who are you?" formControlName="roleName">
+                <mat-option i18n *ngFor="let userRole of userRoles" [value]="userRole.name">
+                  {{ userRole.name }}
                 </mat-option>
               </mat-select>
-              <mat-error i18n *ngIf="loginForm.controls['userType'].hasError('required')">
+              <mat-error i18n *ngIf="loginForm.controls['roleName'].hasError('required')">
                 Field is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -45,14 +45,14 @@
       <mat-tab i18n-label label="Registration">
         <form #registerNgForm="ngForm" [formGroup]="registerForm" novalidate (ngSubmit)="register()">
           <mat-card>
-            <!-- Register user userType control -->
+            <!-- Register user userRole control -->
             <mat-form-field class="full-width">
-              <mat-select i18n-placeholder placeholder="Who are you?" formControlName="userType">
-                <mat-option *ngFor="let userType of userTypes" [value]="userType.name">
-                  {{ userType.name }}
+              <mat-select i18n-placeholder placeholder="Who are you?" formControlName="roleName">
+                <mat-option *ngFor="let userRole of userRoles" [value]="userRole.name">
+                  {{ userRole.name }}
                 </mat-option>
               </mat-select>
-              <mat-error i18n *ngIf="registerForm.controls['userType'].hasError('required')">
+              <mat-error i18n *ngIf="registerForm.controls['roleName'].hasError('required')">
                 Field is <strong>required</strong>
               </mat-error>
             </mat-form-field>

@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 })
 export class CrudAdminsComponent implements OnInit {
 
-  settings = {
+  adminTableSettings = {
     columns: {
       userId: {
         title: 'UserId',

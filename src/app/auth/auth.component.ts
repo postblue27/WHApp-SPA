@@ -5,6 +5,7 @@ import { SnotifyService } from 'ng-snotify';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from '../_helpers/custom-validators';
 import { AuthService } from '../_services/auth.service';
+import { RolesService } from '../_services/roles.service';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +15,7 @@ import { AuthService } from '../_services/auth.service';
 export class AuthComponent implements OnInit {
   model: any;
   loginForm = this.fb.group({
-    userType: [null, Validators.required],
+    roleName: [null, Validators.required],
     username: [null, Validators.required],
     password: [null, Validators.compose([
       Validators.required])
@@ -30,7 +31,7 @@ export class AuthComponent implements OnInit {
   });
 
   registerForm = this.fb.group({
-    userType: [null, Validators.required],
+    roleName: [null, Validators.required],
     username: [null, Validators.required],
     password: [null, Validators.compose([
       Validators.required, Validators.minLength(6), Validators.maxLength(20)])
@@ -41,17 +42,22 @@ export class AuthComponent implements OnInit {
     validator: CustomValidators.passwordMatchValidator
   });
 
-  userTypes = [
-    {name: 'Owner'},
-    {name: 'Renter'},
-    {name: 'Driver'},
-    {name: 'Admin'},
-  ];
+  userRoles : any;
 
   constructor(private fb: FormBuilder, private authService: AuthService,
-    public toastr: ToastrService, private router: Router) { }
+    public toastr: ToastrService, private router: Router,
+    private rolesService: RolesService) { }
 
   ngOnInit() {
+    this.getUserRoles();
+  }
+
+  getUserRoles() {
+    this.rolesService.getRoles().subscribe( response => {
+      this.userRoles = response;
+    }, error => {
+      console.log('Error retrieving roles.');
+    });
   }
 
   login() {

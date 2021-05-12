@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
-import { Snotify, SnotifyService } from 'ng-snotify';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -53,4 +52,5 @@ export class AuthService {
     this.decodedToken = this.jwtHelper.decodeToken(token);
     return this.decodedToken;
   }
+
 }
