@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SnotifyService } from 'ng-snotify';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from '../_helpers/custom-validators';
 import { AuthService } from '../_services/auth.service';
@@ -18,15 +17,7 @@ export class AuthComponent implements OnInit {
     username: [null, Validators.required],
     password: [null, Validators.compose([
       Validators.required])
-    ],
-    // address: [null, Validators.required],
-    // address2: null,
-    // city: [null, Validators.required],
-    // userType: [null, Validators.required],
-    // postalCode: [null, Validators.compose([
-    //   Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    // ],
-    // shipping: ['free', Validators.required]
+    ]
   });
 
   registerForm = this.fb.group({
@@ -35,7 +26,7 @@ export class AuthComponent implements OnInit {
     password: [null, Validators.compose([
       Validators.required, Validators.minLength(6), Validators.maxLength(20)])
     ],
-    confirmPassword: [null, Validators.required/*CustomValidators.passwordMatchValidator*/],
+    confirmPassword: [null, Validators.required],
   },
   {
     validator: CustomValidators.passwordMatchValidator
@@ -54,24 +45,26 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.authService.login(this.loginForm.value).subscribe(response => {
+  login(form: FormGroup) {
+    this.authService.login(form.value).subscribe(response => {
       this.toastr.success('Logged In');
     }, error => {
       this.toastr.error('Failed to login: ' + error);
     }, () => {
-      if(this.authService.getDecodedToken().role === 'Admin')
-      this.router.navigate(['/admin']);
+      if(this.authService.getDecodedToken().role === 'Admin') {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigateByUrl('/dashboard');
+      }
     });
   }
 
   register() {
-    console.log(this.registerForm.value);
-    
     this.authService.register(this.registerForm.value).subscribe(response => {
-      console.log(response);
-      // this.router.navigateByUrl('/dashboard');
+      this.toastr.success('User registered.');
+      this.login(this.registerForm);
     }, error => {
+      this.toastr.error('Error registering user.');
       console.log(error);
     });
   }
