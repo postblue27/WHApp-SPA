@@ -49,6 +49,7 @@ export class AuthComponent implements OnInit {
     this.authService.login(form.value).subscribe(response => {
       this.toastr.success('Logged In');
     }, error => {
+      console.log(error)
       this.toastr.error('Failed to login: ' + error);
     }, () => {
       if(this.authService.getDecodedToken().role === 'Admin') {
