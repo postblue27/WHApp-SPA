@@ -29,26 +29,31 @@ export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
+const materialModules = [
+  MatIconModule,
+  MatTabsModule,
+  MatCardModule,
+  MatInputModule,
+  MatButtonModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatRadioModule,
+  MatListModule,
+  MatIconModule,
+];
+
 @NgModule({
   declarations: [	
     AppComponent,
     AuthComponent,
    ],
   imports: [
+    ...materialModules,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTabsModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatRadioModule,
-    MatListModule,
     ReactiveFormsModule,
     NgbModule,
-    MatIconModule,
     SnotifyModule,
     HttpClientModule,
     AdminModule,

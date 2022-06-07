@@ -1,6 +1,7 @@
 <mat-card mat-card  class="app-nav color-primary">
-  <button type="button" mat-stroked-button color="accent" (click)="drawer.toggle()">
-    Toggle sidenav
+  <button mat-icon-button color="accent" (click)="drawer.toggle()">
+    <mat-icon *ngIf="!drawer.opened; else elseBlock">menu</mat-icon>
+    <ng-template #elseBlock><mat-icon>menu_open</mat-icon></ng-template>
   </button>
 </mat-card>
 <mat-drawer-container class="example-container" autosize>
