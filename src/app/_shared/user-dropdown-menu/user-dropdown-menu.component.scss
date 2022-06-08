@@ -1,0 +1,14 @@
+@mixin mat-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  
+.material-icons.mat-icon {
+    @include mat-icon-size(40px);
+    margin: 12px;
+}
+
+.user-dropdown-button{
+    font-size: medium;
+}
