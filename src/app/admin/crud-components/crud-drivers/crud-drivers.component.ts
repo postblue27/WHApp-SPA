@@ -13,7 +13,7 @@ export class CrudDriversComponent implements OnInit {
 
   settings = {
     columns: {
-      userId: {
+      id: {
         title: 'UserId',
         editable: false
       },
@@ -48,28 +48,30 @@ export class CrudDriversComponent implements OnInit {
       this.drivers = response;
       console.log(response);
     }, error => {
-      this.toastr.error(error);
+      console.error(error);
     })
   }
 
   updateUser(e: any) {
     // console.log(e);
-    this.adminService.updateUser(UserTypes.Driver, e.newData).subscribe(response => {
+    this.adminService.updateUser(e.newData).subscribe(response => {
       // console.log(response);
       this.getUsers();
       this.toastr.success('User updated');
     }, error => {
       this.toastr.error(error);
+      console.error(error);
     });
   }
 
   deleteUser(e: any) {
     // console.log(e);
-    this.adminService.deleteUser(UserTypes.Driver, e.data.userId).subscribe(response => {
+    this.adminService.deleteUser(e.data.id).subscribe(response => {
       this.getUsers();
       this.toastr.success('User deleted');
     }, error => {
       this.toastr.error(error);
+      console.error(error);
     });
   }
 
@@ -86,6 +88,7 @@ export class CrudDriversComponent implements OnInit {
       this.toastr.success('User created');
     }, error => {
       this.toastr.error('Error creating user');
+      console.error(error);
     });
   }
 }

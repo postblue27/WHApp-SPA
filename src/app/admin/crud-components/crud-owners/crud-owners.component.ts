@@ -14,7 +14,7 @@ export class CrudOwnersComponent implements OnInit {
 
   settings = {
     columns: {
-      userId: {
+      id: {
         title: 'UserId',
         editable: false
       },
@@ -49,32 +49,31 @@ export class CrudOwnersComponent implements OnInit {
       console.log(response);
     }, error => {
       this.toastr.error(error);
+      console.error(error);
     })
   }
 
   updateUser(e: any) {
-    // console.log(e);
-    this.adminService.updateUser(UserTypes.Owner, e.newData).subscribe(response => {
-      // console.log(response);
+    this.adminService.updateUser(e.newData).subscribe(response => {
       this.getUsers();
       this.toastr.success('User updated');
     }, error => {
       this.toastr.error(error);
+      console.error(error);
     });
   }
 
   deleteUser(e: any) {
-    // console.log(e);
-    this.adminService.deleteUser(UserTypes.Owner, e.data.userId).subscribe(response => {
+    this.adminService.deleteUser(e.data.id).subscribe(response => {
       this.getUsers();
       this.toastr.success('User deleted');
     }, error => {
-      this.toastr.error(error);
+      this.toastr.error('Error deleting user');
+      console.error(error);
     });
   }
 
   createUser(e: any) {
-    // console.log(e);
     const userToCreate = {
       'username': e.newData.username,
       'userType': UserTypes.Owner,
@@ -86,6 +85,7 @@ export class CrudOwnersComponent implements OnInit {
       this.toastr.success('User created');
     }, error => {
       this.toastr.error('Error creating user');
+      console.error(error);
     });
   }
 }

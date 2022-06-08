@@ -12,10 +12,10 @@ export class AdminService {
   getUsers(userType: any) {
     return this.http.get(this.baseUrl + '/get-users/' + userType);
   }
-  updateUser(userType: any, data: any) {
-    return this.http.post(this.baseUrl + '/update-user/' + userType, data);
+  updateUser(data: any) {
+    return this.http.post(this.baseUrl + '/update-user', data);
   }
-  deleteUser(userType: any, userId: any) {
-    return this.http.delete(this.baseUrl + '/delete-user/' + userType + '/' + userId);
+  deleteUser(userId: any) {
+    return this.http.delete(this.baseUrl + '/delete-user/' + userId);
   }
 }

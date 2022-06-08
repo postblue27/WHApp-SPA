@@ -13,7 +13,7 @@ export class CrudRentersComponent implements OnInit {
 
   settings = {
     columns: {
-      userId: {
+      id: {
         title: 'UserId',
         editable: false
       },
@@ -48,28 +48,30 @@ export class CrudRentersComponent implements OnInit {
       this.renters = response;
       console.log(response);
     }, error => {
-      this.toastr.error(error);
+      console.error(error);
     })
   }
 
   updateUser(e: any) {
     // console.log(e);
-    this.adminService.updateUser(UserTypes.Renter, e.newData).subscribe(response => {
+    this.adminService.updateUser(e.newData).subscribe(response => {
       // console.log(response);
       this.getUsers();
       this.toastr.success('User updated');
     }, error => {
       this.toastr.error(error);
+      console.error(error);
     });
   }
 
   deleteUser(e: any) {
     // console.log(e);
-    this.adminService.deleteUser(UserTypes.Renter, e.data.userId).subscribe(response => {
+    this.adminService.deleteUser(e.data.id).subscribe(response => {
       this.getUsers();
       this.toastr.success('User deleted');
     }, error => {
       this.toastr.error(error);
+      console.error(error);
     });
   }
 
@@ -86,6 +88,7 @@ export class CrudRentersComponent implements OnInit {
       this.toastr.success('User created');
     }, error => {
       this.toastr.error('Error creating user');
+      console.error(error);
     });
   }
 }

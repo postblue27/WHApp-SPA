@@ -8,6 +8,11 @@ html, body {
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+button:focus {
+    outline: none !important;
+    overflow: hidden;
+}
+
 .contentDiv{
     width: 60%;
     position: fixed;

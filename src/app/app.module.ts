@@ -24,13 +24,15 @@ import { AuthService } from './_services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { ToastrModule } from 'ngx-toastr';
+import { OwnerModule } from './owner/owner.module';
+import { SharedModule } from './_shared/shared.module';
+import { MatMenuModule } from '@angular/material/menu';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 const materialModules = [
-  MatIconModule,
   MatTabsModule,
   MatCardModule,
   MatInputModule,
@@ -40,6 +42,7 @@ const materialModules = [
   MatRadioModule,
   MatListModule,
   MatIconModule,
+  MatMenuModule,
 ];
 
 @NgModule({
@@ -49,6 +52,11 @@ const materialModules = [
    ],
   imports: [
     ...materialModules,
+
+    AdminModule,
+    OwnerModule,
+    SharedModule,
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -56,7 +64,6 @@ const materialModules = [
     NgbModule,
     SnotifyModule,
     HttpClientModule,
-    AdminModule,
     BrowserAnimationsModule,
     Ng2SmartTableModule,
     ToastrModule.forRoot(),

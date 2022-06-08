@@ -1,15 +1,16 @@
 <mat-card mat-card  class="app-nav color-primary">
-  <button mat-icon-button color="accent" (click)="drawer.toggle()">
+  <button mat-icon-button class="text-light" (click)="drawer.toggle()">
     <mat-icon *ngIf="!drawer.opened; else elseBlock">menu</mat-icon>
     <ng-template #elseBlock><mat-icon>menu_open</mat-icon></ng-template>
   </button>
+  <button mat-stroked-button class="text-light" (click)="authService.logout()">Logout</button>
 </mat-card>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" opened>
     
     <mat-accordion>
 
-      <mat-expansion-panel>
+      <mat-expansion-panel expanded="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Users

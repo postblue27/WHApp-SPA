@@ -1,0 +1,10 @@
+<button mat-button [matMenuTriggerFor]="beforeMenu">
+  <mat-icon>person</mat-icon>
+  {{decodedToken.unique_name.toUpperCase()}}
+</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="authService.logout()">
+    <mat-icon>logout</mat-icon>
+    Logout
+  </button>
+</mat-menu>

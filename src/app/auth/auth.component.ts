@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from '../_helpers/custom-validators';
+import { UserTypes } from '../_helpers/UserTypes';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -52,10 +53,19 @@ export class AuthComponent implements OnInit {
       console.log(error)
       this.toastr.error('Failed to login: ' + error);
     }, () => {
-      if(this.authService.getDecodedToken().role === 'Admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigateByUrl('/dashboard');
+      switch(this.authService.getDecodedToken().role) {
+        case UserTypes.Admin:
+          this.router.navigateByUrl('/admin');
+          break;
+        case UserTypes.Owner:
+          this.router.navigateByUrl('/owner/list');
+          break;
+        case UserTypes.Renter:
+          this.router.navigateByUrl('/renter');
+          break;
+        case UserTypes.Driver:
+          this.router.navigateByUrl('/driver');
+          break;
       }
     });
   }
@@ -65,7 +75,7 @@ export class AuthComponent implements OnInit {
       this.toastr.success('User registered.');
       this.login(this.registerForm);
     }, error => {
-      this.toastr.error('Error registering user.');
+      this.toastr.error('Something went wrong...');
       console.log(error);
     });
   }

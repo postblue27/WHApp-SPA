@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,5 +8,5 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 })
 export class AdminDashboardComponent {
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(public authService: AuthService) {}
 }

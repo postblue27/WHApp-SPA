@@ -1,0 +1,19 @@
+<owner-nav></owner-nav>
+<nav mat-tab-nav-bar mat-align-tabs="center">
+
+  <a mat-tab-link
+     [routerLink]="'list'"
+     routerLinkActive #list="routerLinkActive"
+     [active]="list.isActive">
+      List
+  </a>
+
+  <a mat-tab-link
+     [routerLink]="'create'"
+     routerLinkActive #create="routerLinkActive"
+     [active]="create.isActive">
+      Create
+  </a>
+
+</nav>
+  <router-outlet></router-outlet>

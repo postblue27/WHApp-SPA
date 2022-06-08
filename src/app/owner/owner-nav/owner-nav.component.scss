@@ -1,0 +1,30 @@
+
+.home-link {
+  a {
+    margin-left: 16px;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+@mixin mat-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+.material-icons.mat-icon {
+  @include mat-icon-size(40px);
+  margin: 12px;
+}
+
+.sandwich {
+  cursor: pointer;
+  padding: 0;
+  // background-color: red;
+}
+
