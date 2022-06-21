@@ -1,3 +1,77 @@
-<p>
-  create-warehouse works!
-</p>
+<div class="component-container">
+    <div class="container-width mt-4">
+        <form [formGroup]="createWarehouseFormGroup" (ngSubmit)="onFormSubmit()">
+            <mat-vertical-stepper orientation="vertical" [linear]="false" #stepper>
+
+                <mat-step [stepControl]="createWarehouseFormGroup">
+                    <ng-template matStepLabel>Fill out warehouse name and capacity</ng-template>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Warehouse Name</mat-label>
+                        <input matInput placeholder="Warehouse Name" formControlName="name" required>
+                    </mat-form-field>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Warehouse Capacity</mat-label>
+                        <input matInput type="number" placeholder="Warehouse Capacity" formControlName="capacity" required>
+                        <mat-hint>Сapacity is measured in standard 1.2m х 1m pallets</mat-hint>
+                    </mat-form-field>
+                    <div>
+                        <button mat-stroked-button color="primary" type="button" class="w-50 mt-4" matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                
+                <mat-step [stepControl]="createWarehouseFormGroup">
+                    <ng-template matStepLabel>Select your country</ng-template>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Country</mat-label>
+                        <mat-select (selectionChange)="countrySelectionChange($event)" formControlName="country" placeholder="Country">
+                            <mat-option *ngFor="let country of countries" [value]="country">
+                                {{country.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <button mat-stroked-button class="w-50" color="primary" type="button" matStepperNext>Next</button>
+                        <button mat-button class="w-50" matStepperPrevious>Back</button>
+                    </div>
+                </mat-step>
+
+                <mat-step [stepControl]="createWarehouseFormGroup">
+                    <ng-template matStepLabel>Select your city</ng-template>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>City</mat-label>
+                        <mat-select (selectionChange)="citySelectionChange($event)" formControlName="city" placeholder="City">
+                            <mat-option  *ngFor="let city of selectedCountry.cities" [value]="city">
+                                {{city}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <button mat-stroked-button class="w-50" color="primary" type="button" matStepperNext>Next</button>
+                        <button mat-button class="w-50" matStepperPrevious>Back</button>
+                    </div>
+                </mat-step>
+
+                <mat-step>
+                <ng-template matStepLabel>Select on a map</ng-template>
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Search for your Warehouse</mat-label>
+                        <input matInput placeholder="Search Places" #searchInput>
+                        <mat-icon matPrefix>search</mat-icon>
+                    </mat-form-field>
+                    <button mat-stroked-button class="w-100 mb-2" matStepperPrevious>Back</button>
+                    <google-map width="100%" [options]="googleMapOptions"
+                        (mapClick)="addMarker($event)">
+                        <map-marker
+                            [position]="markerPosition"
+                            [options]="markerOptions">
+                        </map-marker>
+                    </google-map>
+                    <button mat-stroked-button color="primary" class="w-100 mt-4" type="submit">Submit</button>
+                </mat-step>
+                
+            </mat-vertical-stepper>
+            
+        </form>
+        
+    </div>
+</div>

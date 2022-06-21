@@ -21,7 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { AuthService } from './_services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { ToastrModule } from 'ngx-toastr';
 import { OwnerModule } from './owner/owner.module';
@@ -64,6 +64,7 @@ const materialModules = [
     NgbModule,
     SnotifyModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     BrowserAnimationsModule,
     Ng2SmartTableModule,
     ToastrModule.forRoot(),

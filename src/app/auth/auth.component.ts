@@ -51,7 +51,7 @@ export class AuthComponent implements OnInit {
       this.toastr.success('Logged In');
     }, error => {
       console.log(error)
-      this.toastr.error('Failed to login: ' + error);
+      this.toastr.error('Failed to login: ' + error.error);
     }, () => {
       switch(this.authService.getDecodedToken().role) {
         case UserTypes.Admin:

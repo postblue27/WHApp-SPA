@@ -1,5 +1,42 @@
-<div class="main-container">
-  <button>
-    warehouse-list works!
-  </button>
+<div class="component-container">
+  <google-map width="700px" height="300px" [options]="googleMapOptions">
+    <map-marker
+      [position]="markerPosition"
+      [options]="markerOptions">
+    </map-marker>
+  </google-map>
+  <div class="company-card warehouse-list-accordion" *ngFor="let warehouse of warehouses">
+    <div class="company-header">
+        <div class="company-header-item"><h2>{{warehouse.name}}</h2></div>
+        <div class="company-header-item-end">
+          <!-- <button mat-button>Delete</button> -->
+        </div>
+    </div> 
+    <p-divider></p-divider>
+    <div class="card-body">
+        <div class="card-body-item">
+            <label for="region" class="label-text">Capacity</label>
+            <span id="region">{{warehouse.capacity}}</span>
+        </div>
+        <div class="card-body-item">
+            <label for="sector" class="label-text">Country</label>
+            <span id="sector">{{warehouse.country}}</span>
+        </div>
+        <div class="card-body-item">
+            <label for="industry" class="label-text">City</label>
+            <span id="industry">{{warehouse.city}}</span>
+        </div>
+        <div class="card-body-item">
+            <label for="stockPrice" class="label-text">Latitude</label>
+            <span id="stockPrice">{{warehouse.latitude}}</span>
+        </div>
+        <div class="card-body-item">
+          <label for="stockPrice" class="label-text">Longitude</label>
+          <span id="stockPrice">{{warehouse.longitude}}</span>
+      </div>
+    </div>
+    <p-divider></p-divider>
+    
+    <button mat-stroked-button color="primary" (click)="revealOnTheMap(warehouse.latitude, warehouse.longitude)">Reveal on the map</button>
+  </div>
 </div>
