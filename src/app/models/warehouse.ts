@@ -6,5 +6,6 @@ export class Warehouse {
     city: string;
     latitude: number;
     longitude: number;
+    cost: number;
     ownerId: number;
 }

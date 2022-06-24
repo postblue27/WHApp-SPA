@@ -1,0 +1,48 @@
+<div class="header-div">
+    <div class="header-flex-item">
+        <label class="control-label">Country selection</label>
+        <p-dropdown [(ngModel)]="selectedCountry" (onChange)="onCountryChange($event)" [style]="{'width':'100%'}" 
+            [options]="countries" optionLabel="name" placeholder="Sort By Country" [filter]="true"
+            styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+    </div>
+    <div class="header-flex-item">
+        <label class="control-label">City selection</label>
+        <p-dropdown [(ngModel)]="selectedCity" [disabled]="selectedCountryCities.length == 0" (onChange)="onCityChange($event)" [style]="{'width':'100%'}" 
+            [options]="selectedCountryCities" placeholder="Sort By City" [filter]="true"
+            styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+    </div>
+    <div class="header-flex-item">
+        <label class="control-label">Search Warehouse</label>
+        <span class="p-input-icon-right p-mb-2 p-mb-md-0">
+            <i class="pi pi-search"></i>
+            <input (input)="applyFilters()" [(ngModel)]="searchString" [style]="{'width':'100%'}" id="search-input" type="search" pInputText placeholder="Search">
+        </span>
+    </div>
+    <div class="search-button-div">
+        <button (click)="clearFilters()" pButton pRipple type="button" icon="pi pi-filter-slash" label="Clear" class="p-button-outlined p-button-secondary"></button>
+    </div>
+</div>
+
+<p-table [value]="filteredWarehouses" [scrollable]="true" scrollHeight="400px" [paginator]="false" [rows]="5" [responsive]="true" 
+    [style]="{'margin-top':'20px', 'border':'2 px solid black'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Warehouse Name</th>
+            <th>Capacity</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Cost palet/month</th>
+            <th>&nbsp;</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-warehouse>
+        <tr >
+            <td>{{warehouse.name}}</td>
+            <td><img style="width:34px" src="assets/icon-images/pallet.png"/> {{warehouse.capacity}}</td>
+            <td>{{warehouse.country}}</td>
+            <td>{{warehouse.city}}</td>
+            <td>${{warehouse.cost}}</td>
+            <td><button mat-stroked-button color="primary" class="w-75" (click)="rentWarehouse(warehouse)">Rent</button></td>
+        </tr>
+    </ng-template>
+</p-table>

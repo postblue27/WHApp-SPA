@@ -20,6 +20,7 @@ export class CreateWarehouseComponent implements OnInit, AfterViewInit {
   createWarehouseFormGroup = this.formBuilder.group({
     name: ['', Validators.required],
     capacity: ['', Validators.required],
+    cost: ['', Validators.required],
     country: ['', Validators.required],
     city: ['', Validators.required],
   })

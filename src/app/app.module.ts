@@ -27,6 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { OwnerModule } from './owner/owner.module';
 import { SharedModule } from './_shared/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
+import { DriverModule } from './driver/driver.module';
+import { RenterModule } from './renter/renter.module';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -55,6 +57,8 @@ const materialModules = [
 
     AdminModule,
     OwnerModule,
+    RenterModule,
+    DriverModule,
     SharedModule,
 
     BrowserModule,

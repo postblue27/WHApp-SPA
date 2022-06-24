@@ -7,7 +7,7 @@
   </google-map>
   <div class="company-card warehouse-list-accordion" *ngFor="let warehouse of warehouses">
     <div class="company-header">
-        <div class="company-header-item"><h2>{{warehouse.name}}</h2></div>
+        <div class="company-header-item"><h2><mat-icon>warehouse</mat-icon> {{warehouse.name}}</h2></div>
         <div class="company-header-item-end">
           <!-- <button mat-button>Delete</button> -->
         </div>
@@ -16,7 +16,7 @@
     <div class="card-body">
         <div class="card-body-item">
             <label for="region" class="label-text">Capacity</label>
-            <span id="region">{{warehouse.capacity}}</span>
+            <span id="region" title="1.2m х 1m pallets"><img style="width:34px" src="assets/icon-images/pallet.png"/> {{warehouse.capacity}}</span>
         </div>
         <div class="card-body-item">
             <label for="sector" class="label-text">Country</label>
@@ -27,13 +27,9 @@
             <span id="industry">{{warehouse.city}}</span>
         </div>
         <div class="card-body-item">
-            <label for="stockPrice" class="label-text">Latitude</label>
-            <span id="stockPrice">{{warehouse.latitude}}</span>
+            <label for="cost" class="label-text">Cost palet/month</label>
+            <span id="cost">${{warehouse.cost}}</span>
         </div>
-        <div class="card-body-item">
-          <label for="stockPrice" class="label-text">Longitude</label>
-          <span id="stockPrice">{{warehouse.longitude}}</span>
-      </div>
     </div>
     <p-divider></p-divider>
     

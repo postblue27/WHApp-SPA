@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <button mat-button class="mat-button" routerLink="/renter/rented-list">
+      <mat-icon>home</mat-icon>
+  </button>
+
+  <div class="home-link" fxShow fxHide.lt-md>
+    <a routerLink="/renter/rented-list">
+      WHApp - Renter Portal
+    </a>
+  </div>
+
+  <div class="spacer"></div>
+
+  <user-dropdown-menu></user-dropdown-menu>
+</mat-toolbar>
