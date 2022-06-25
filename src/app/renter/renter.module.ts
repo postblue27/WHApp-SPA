@@ -30,6 +30,9 @@ import {CardModule} from 'primeng/card';
 import { WarehouseSearchDialogComponent } from './warehouse-search-dialog/warehouse-search-dialog.component';
 import { RenterSidebarComponent } from './renter-sidebar/renter-sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RentedWarehousesComponent } from './rented-warehouses/rented-warehouses.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 const materialModules = [
   MatIconModule,
@@ -77,7 +80,10 @@ const googleMapsModules = [
     RenterComponent,
     RenterNavComponent,
     WarehouseSearchDialogComponent,
-    RenterSidebarComponent
+    RenterSidebarComponent,
+    RentedWarehousesComponent,
+    AddProductComponent,
+    ProductsListComponent,
   ]
 })
 export class RenterModule { }

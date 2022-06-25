@@ -1,7 +1,7 @@
 aside{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100px;
     flex-flow: column;
     height: 100%;
@@ -9,7 +9,7 @@ aside{
     transition: all 0.5s;
     flex-grow: 1;
     border-right: 1px solid grey;
-    background-color: rgb(240,240,240);
+    background-color: rgb(245,245,245);
 }
 .aside-active{
     width: 350px;
@@ -18,11 +18,16 @@ aside{
 .sidebar-button {
     height: 50px;
     width: 80%;
-    margin: 5vh auto 5vh auto;
+    margin: 5vh auto 0 auto;
     cursor: pointer;
     border: 2px solid grey;
     border-radius: 5px;
     background-color: inherit;
+}
+
+.btn-flex-end {
+    margin-top: auto;
+    margin-bottom: 5vh;
 }
 
 .sidebar-button span {
@@ -53,7 +58,3 @@ aside{
     transform: rotate(0deg);
     transition: all 0.5s;
 }
-
-::ng-deep .no-label>.p-button-label {
-    display: none;
-  }

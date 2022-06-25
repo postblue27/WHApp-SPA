@@ -1,8 +1,10 @@
 <div class="wrapper">
-  <renter-nav></renter-nav>
+  <renter-nav class="renter-nav"></renter-nav>
   <div class="main-container">
     <app-renter-sidebar></app-renter-sidebar>
-    <div class="rented-warehouses-container" style="background-color: white;"></div>
+    <div class="rented-warehouses-container" style="background-color: white;">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <!-- <router-outlet></router-outlet> -->
+  
 </div>

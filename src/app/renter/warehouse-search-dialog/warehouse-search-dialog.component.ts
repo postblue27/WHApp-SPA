@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { SelectItem } from 'primeng/api';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Observable, Subscription } from 'rxjs';
@@ -21,7 +22,8 @@ export class WarehouseSearchDialogComponent implements OnInit, OnDestroy {
   selectedCity: string | null = null;
   countries: Country[] = [];
   selectedCountryCities: SelectItem[] = [];
-  constructor(private warehouseService: WarehouseService, public ref: DynamicDialogRef, private http: HttpClient) { }
+  constructor(private warehouseService: WarehouseService, public ref: DynamicDialogRef, private http: HttpClient,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getWarehouses();
@@ -112,7 +114,10 @@ export class WarehouseSearchDialogComponent implements OnInit, OnDestroy {
 
   rentWarehouse(warehouse: Warehouse) {
     this.warehouseService.rentWarehouse(warehouse).subscribe(() => {
+      this.toastr.info(`Warehouse ${warehouse.name} rented.`);
       this.ref.close(warehouse);
+    }, error => {
+      this.toastr.error('Error renting warehouse.');
     });
   }
 }

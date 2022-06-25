@@ -1,0 +1,35 @@
+<div class="warehouses-container">
+  <h1 class="m-4">Your Products</h1>
+  <google-map width="700px" height="300px" [options]="googleMapOptions">
+      <map-marker
+          [position]="markerPosition"
+          [options]="markerOptions">
+      </map-marker>
+  </google-map>
+  <div class="company-card warehouse-list-accordion" *ngFor="let product of products">
+    <div class="company-header">
+        <div class="company-header-item"><h2><mat-icon>inventory_2</mat-icon> {{product.productName}}</h2></div>
+        <div class="company-header-item-end">
+          <!-- <button mat-button>Delete</button> -->
+        </div>
+    </div> 
+    <p-divider></p-divider>
+    <div class="card-body">
+        <div class="card-body-item">
+            <label for="region" class="label-text">Capacity</label>
+            <span id="region" title="1.2m х 1m pallets"><img style="width:34px" src="assets/icon-images/pallet.png"/> {{product.capacity}}</span>
+        </div>
+        <div class="card-body-item">
+            <label for="sector" class="label-text">Country</label>
+            <span id="sector">{{product.country}}</span>
+        </div>
+        <div class="card-body-item">
+            <label for="industry" class="label-text">City</label>
+            <span id="industry">{{product.city}}</span>
+        </div>
+    </div>
+    <p-divider></p-divider>
+    
+    <button mat-stroked-button color="primary" (click)="revealOnTheMap(product.latitude, product.longitude)">Reveal on the map</button>
+  </div>
+</div>

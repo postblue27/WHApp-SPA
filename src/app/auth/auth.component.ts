@@ -61,7 +61,7 @@ export class AuthComponent implements OnInit {
           this.router.navigateByUrl('/owner/list');
           break;
         case UserTypes.Renter:
-          this.router.navigateByUrl('/renter');
+          this.router.navigateByUrl('/renter/rented-warehouses');
           break;
         case UserTypes.Driver:
           this.router.navigateByUrl('/driver');

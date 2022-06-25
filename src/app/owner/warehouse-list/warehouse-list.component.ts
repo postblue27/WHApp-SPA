@@ -31,7 +31,7 @@ export class WarehouseListComponent implements OnInit {
   revealOnTheMap(lat, lng) {
     this.googleMapOptions = {
       center: new google.maps.LatLng(parseFloat(lat), parseFloat(lng)),
-      zoom: 10
+      zoom: 15
     }
     this.markerPosition = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
   }

@@ -26,7 +26,7 @@ export class WarehouseService {
   rentWarehouse(warehouse): Observable<void> {
     return this.http.post<void>(this.baseUrl + '/rent-warehouse', 
       {
-        id: this.authService.getDecodedToken().nameid,
+        renterId: this.authService.getDecodedToken().nameid,
         warehouseId: warehouse.id
       });
   }

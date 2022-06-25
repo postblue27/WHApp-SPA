@@ -1,11 +1,27 @@
 <aside [ngClass]="{'aside-active': display}">
+    <button class="sidebar-button" type="button" routerLink="rented-warehouses">
+        <mat-icon style="vertical-align: middle;">home</mat-icon>
+        <span>{{display ? 'Home' : ''}}</span>
+    </button>
     <button class="sidebar-button" type="button" (click)="showWarehousesDialog()">
         <span class="material-symbols-outlined">
         search
         </span>
         <span>{{display ? 'Search Warehouses' : ''}}</span>
     </button>
-    <button class="sidebar-button no-label" type="button" (click)="display = !display" >
+    <button class="sidebar-button" type="button" routerLink="add-product">
+        <span class="material-symbols-outlined">
+        add
+        </span>
+        <span>{{display ? 'Add Product' : ''}}</span>
+    </button>
+    <button class="sidebar-button" type="button" routerLink="products-list">
+        <span class="material-symbols-outlined">
+        list
+        </span>
+        <span>{{display ? 'Products List' : ''}}</span>
+    </button>
+    <button class="sidebar-button btn-flex-end" type="button" (click)="display = !display" >
         <span class="material-symbols-outlined" [ngClass]="{'rotate-180': display, 'rotate-0': !display}">
         start
         </span>
